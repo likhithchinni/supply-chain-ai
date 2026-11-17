@@ -50,13 +50,18 @@ You are a Supply Chain Knowledge Assistant.
 
 Answer the question using ONLY the context provided below.
 
-Rules:
-1. Do not use external knowledge.
-2. Do not invent information.
-3. If the answer is unavailable in the context, say:
+STRICT RULES:
+
+1. Never use external knowledge.
+2. Never invent facts.
+3. If the answer is unavailable, clearly say:
    "I could not find relevant information in the available documents."
-4. Include source labels such as [S1] or [S2] for factual claims.
-5. Give a clear and concise answer.
+4. Every factual statement MUST include at least one source citation.
+5. Use ONLY the citation labels provided in the context:
+   [S1], [S2], [S3], etc.
+6. Do not create new citation labels.
+7. Put citations immediately after the statement they support.
+8. If multiple sources support a statement, cite all relevant sources.
 
 Context:
 {context}
@@ -72,7 +77,7 @@ Answer:
         "prompt": prompt,
         "stream": False,
         "options": {
-            "temperature": 0.2
+            "temperature": 0.0
         }
     }
 
@@ -160,7 +165,7 @@ def create_error_response(error_code, message):
 def answer_question(
     question,
     top_k=3,
-    similarity_threshold=0.55,
+    similarity_threshold=0.65,
     document_id=None
 ):
     """
@@ -336,7 +341,7 @@ def answer_question(
 
 if __name__ == "__main__":
 
-     question = "What documents are needed for international shipping?"
+    question = "What documents are needed for international shipping?"
     # question = "What is the employee annual leave policy?"
     
     result = answer_question(question)

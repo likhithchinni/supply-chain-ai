@@ -68,7 +68,8 @@ def assemble_context(chunks, max_chars=10000):
             "file_name": chunk["file_name"],
             "page_number": chunk["page_number"],
             "chunk_id": chunk["chunk_id"],
-            "similarity_score": chunk["similarity_score"]
+            "similarity_score": chunk["similarity_score"],
+            "content": chunk["content"]
         })
 
     # Step 5: Combine everything
