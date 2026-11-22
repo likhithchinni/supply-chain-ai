@@ -115,5 +115,5 @@ if __name__ == "__main__":
 
     print("\nDocument chunking and embedding completed!")
 
-
-verify_overlap(chunks, CHUNK_OVERLAP)
+    # Verify overlap only when running this file directly
+    verify_overlap(chunks, CHUNK_OVERLAP)
